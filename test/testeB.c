@@ -1,10 +1,14 @@
 #include <stdlib.h>
-#include <stdarg.h>
+
+#include <stdarg.h> /*
+                        Permite que as funções aceitem um número infinito de argumentos.
+                        Oferece recursos para percorrer uma lista de argumentos de número e tipo desconhecidos.
+                    */
 #include <stdio.h>
 
 #define CMD_TAM_MAX 1024
 
-int systemf(const char * fmt, ... ) {
+int systemCL(const char* fmt, ...) {
     va_list args;
     char cmd[CMD_TAM_MAX + 1];
 
@@ -17,10 +21,10 @@ int systemf(const char * fmt, ... ) {
 
 int main() {
 
-    char mensagem[20] = "terceiro commit";
+    char mensagem[20] = "quinto commit";
 
     system("git log");
-    systemf("git commit -m \"%s\" --all ", mensagem);
+    systemCL("git commit -m \"%s\" --all ", mensagem);
 
     return 0;
 }
