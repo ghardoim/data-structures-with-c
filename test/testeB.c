@@ -17,7 +17,7 @@ int systemf(const char * fmt, ... ) {
 
 int main() {
 
-    char mensagem[20] = "segundo commit";
+    char mensagem[20] = "terceiro commit";
 
     system("git log");
     systemf("git commit -m \"%s\" --all ", mensagem);
