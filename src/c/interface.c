@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../h/interface.h"
-
 void escolhaErrada() {
     system("clear");
     printf(" _______________________________________________________________________________________________ \n");
