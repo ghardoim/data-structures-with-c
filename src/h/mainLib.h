@@ -1,5 +1,5 @@
-#ifndef _LIB_H_
-#define _LIB_H_
+#ifndef _MAINLIB_H_
+#define _MAINLIB_H_
 
 typedef struct data {
     int ano, mes, dia;
@@ -12,7 +12,6 @@ typedef struct pessoa {
     int idade, id;
 }PESSOA;
 
-
 typedef struct paciente {
     struct paciente *pacienteAntes, *pacienteDepois;
     PESSOA individuo;
@@ -20,19 +19,13 @@ typedef struct paciente {
 
 int opcao, total;
 
+// Funções da lista duplamente encadeada.
 void cadastrar(PACIENTE** primeiro, PACIENTE** ultimo);
 void alterar(PACIENTE* primeiro, PACIENTE* ultimo);
 void remover(PACIENTE** primeiro, PACIENTE** ultimo);
 void exibir(PACIENTE* primeiro, PACIENTE* ultimo);
 
-void escreveNoArquivo(PACIENTE* umPaciente);
-void entradaDeDados(PACIENTE* novoPaciente);
-void saidaDeDados(PACIENTE* umPaciente);
-void lerDoArquivo();
-
-void telaInicial();
-void escolhaErrada();
-void ninguemCadastrado();
-void problemaComArquivo();
+// Funções com linha de comando.
+void commitDoPaciente(PACIENTE* umPaciente);
 
 #endif

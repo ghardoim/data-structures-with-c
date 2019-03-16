@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../h/lib.h"
+#include "../h/interface.h"
 
 void escolhaErrada() {
     system("clear");
@@ -36,32 +36,6 @@ void telaInicial() {
     printf("|\t\t\tDigite sua escolha: ");
 }
 
-void entradaDeDados(PACIENTE* novoPaciente){
-    system("clear");
-    printf(" _______________________________________________________________________________________________ \n");
-    printf("|\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-    printf("|\t\t\t\t\tInforme os dados do paciente.\t\t\t\t|\n");
-    printf("|\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-    printf("|\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-    printf("|\t\t\t\tNome: ");
-    fflush(stdin);
-    gets(novoPaciente->individuo.nome);
-    fflush(stdin);
-    printf("|\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-    printf("|\t\t\t\tIdade: ");
-    scanf("%d", &novoPaciente->individuo.idade);
-    printf("|\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-    novoPaciente->individuo.id = total++;
-}
-
-void saidaDeDados(PACIENTE* umPaciente) {
-    printf(" _______________________________________________________________________________________________ \n");
-    printf("|\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-    printf("|\t\t\t\tDados do paciente: %s\t\t\t\t|\n", umPaciente->individuo.nome);
-    printf("|\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-    printf("|\t\t\tIdade: %d\t\t\t\t|\n", umPaciente->individuo.idade);    
-}
-
 void ninguemCadastrado() {
     printf(" _______________________________________________________________________________________________ \n");
     printf("|\t\t\t\t\t\t\t\t\t\t\t\t|\n");
@@ -79,4 +53,12 @@ void problemaComArquivo() {
     printf("|\t\t\t\t\t\t\t\t\t\t\t\t|\n");
     printf(" _______________________________________________________________________________________________ \n");
     system("sleep 5");
+}
+
+void linha() {
+    printf(" _______________________________________________________________________________________________ \n");
+}
+
+void espacoEmBranco() {
+    printf("|\t\t\t\t\t\t\t\t\t\t\t\t|\n");
 }

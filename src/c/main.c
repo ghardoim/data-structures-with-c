@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../h/lib.h"
+#include "../h/interface.h"
+#include "../h/terminal.h"
+#include "../h/mainLib.h"
+#include "../h/arquivo.h"
+#include "../h/in_out.h"
+#include "../h/git.h"
 
 PACIENTE *firstPaciente = NULL, *lastPaciente = NULL;
 
@@ -31,6 +36,7 @@ void cadastrar(PACIENTE** primeiro, PACIENTE** ultimo) {
 
     entradaDeDados(novo);
     escreveNoArquivo(novo);
+    commitDoPaciente(novo);
     system("pause");
 }
 
@@ -46,7 +52,9 @@ void remover(PACIENTE** primeiro, PACIENTE** ultimo) {
     } else {
         *primeiro = (*primeiro)->pacienteDepois;
     }
+    total--;
 }
+
 void exibir(PACIENTE* primeiro, PACIENTE* ultimo) {
     system("clear");
     if (primeiro == NULL && ultimo == NULL) ninguemCadastrado();
@@ -56,32 +64,6 @@ void exibir(PACIENTE* primeiro, PACIENTE* ultimo) {
         primeiro = primeiro->pacienteDepois;
     }
     system("pause");    
-}
-
-void escreveNoArquivo(PACIENTE* umPaciente) {
-    FILE* arquivo = fopen("resources/pacientes.csv", "r+");
-    if (arquivo == 0) problemaComArquivo();
-
-    fseek(arquivo, 0, SEEK_END);
-    fprintf(arquivo, "%s;%d\n", umPaciente->individuo.nome, umPaciente->individuo.idade);
-    
-    fclose(arquivo);
-}
-
-void lerDoArquivo() {
-    char linhaDoArquivo[50];
-
-    FILE* arquivo = fopen("resources/pacientes.csv", "r");
-    if (arquivo == 0) problemaComArquivo();
-
-    fseek(arquivo, 0, SEEK_SET);
-    while(fgetc(arquivo) != EOF) { //Enquanto o caracter atual for diferente do final do arquivo.
-        fscanf(arquivo, "%s", linhaDoArquivo);
-        printf("Linha do arquivo --> %s\n", linhaDoArquivo);   
-    }
-
-    fclose(arquivo);
-    system("pause");
 }
 
 int main() {
@@ -99,8 +81,8 @@ int main() {
                 remover(&firstPaciente, &lastPaciente);
                 break;
             case 4:
-                lerDoArquivo();
-                // exibir(firstPaciente, lastPaciente);
+                //lerDoArquivo();
+                exibir(firstPaciente, lastPaciente);
                 break;
             case 5:
                 //Encerrar.
