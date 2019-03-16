@@ -25,7 +25,4 @@ void alterar(PACIENTE* primeiro, PACIENTE* ultimo);
 void remover(PACIENTE** primeiro, PACIENTE** ultimo);
 void exibir(PACIENTE* primeiro, PACIENTE* ultimo);
 
-// Funções com linha de comando.
-void commitDoPaciente(PACIENTE* umPaciente);
-
 #endif

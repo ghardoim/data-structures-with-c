@@ -3,6 +3,7 @@
 
 #include "mainLib.h"
 
+// Funções com linha de comando.
 void commitDoPaciente(PACIENTE* umPaciente);
 
 #endif
