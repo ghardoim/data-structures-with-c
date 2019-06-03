@@ -1,12 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../h/interface.h"
 #include "../h/terminal.h"
 #include "../h/mainLib.h"
 #include "../h/arquivo.h"
-#include "../h/in_out.h"
-#include "../h/git.h"
 
 PACIENTE *firstPaciente = NULL, *lastPaciente = NULL;
 
@@ -34,18 +31,16 @@ void cadastrar(PACIENTE** primeiro, PACIENTE** ultimo) {
     *ultimo = novo;
     novo->pacienteDepois = NULL;
 
-    entradaDeDados(novo);
     escreveNoArquivo(novo);
-    commitDoPaciente(novo);
     system("pause");
 }
 
 void alterar(PACIENTE* primeiro, PACIENTE* ultimo) {
-    if (primeiro == NULL && ultimo == NULL) ninguemCadastrado();
+    if (primeiro == NULL && ultimo == NULL);
 }
 
 void remover(PACIENTE** primeiro, PACIENTE** ultimo) {
-    if (primeiro == NULL && ultimo == NULL) ninguemCadastrado();
+    if (primeiro == NULL && ultimo == NULL);
     if (*primeiro == *ultimo) {
         *primeiro = NULL;
         *ultimo = NULL;
@@ -57,9 +52,8 @@ void remover(PACIENTE** primeiro, PACIENTE** ultimo) {
 
 void exibir(PACIENTE* primeiro, PACIENTE* ultimo) {
     system("clear");
-    if (primeiro == NULL && ultimo == NULL) ninguemCadastrado();
+    if (primeiro == NULL && ultimo == NULL);
     while (primeiro != NULL && ultimo != NULL){
-        saidaDeDados(primeiro);
         if (primeiro->pacienteDepois == NULL) break;
         primeiro = primeiro->pacienteDepois;
     }
@@ -68,7 +62,6 @@ void exibir(PACIENTE* primeiro, PACIENTE* ultimo) {
 
 int main() {
     do {
-        telaInicial();
         scanf("%d", &opcao);
         switch (opcao) {
             case 1:
@@ -88,7 +81,6 @@ int main() {
                 //Encerrar.
                 break;
             default:
-                escolhaErrada();
                 break;
         }
     } while (opcao != 5);

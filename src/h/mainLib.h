@@ -1,6 +1,9 @@
 #ifndef _MAINLIB_H_
 #define _MAINLIB_H_
 
+#define IMC(altura, peso) (altura * altura / peso)
+#define IDADE(anoNasc) (2019 - anoNasc)
+
 typedef struct data {
     int ano, mes, dia;
 }DATA;
@@ -8,13 +11,13 @@ typedef struct data {
 typedef struct pessoa {
     DATA dataNascimento;
     float peso, altura;
-    char nome[20];
-    int idade, id;
+    char nome[30];
 }PESSOA;
 
 typedef struct paciente {
     struct paciente *pacienteAntes, *pacienteDepois;
     PESSOA individuo;
+    int id;
 }PACIENTE;
 
 int opcao, total;

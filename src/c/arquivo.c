@@ -2,14 +2,16 @@
 #include <stdlib.h>
 
 #include "../h/mainLib.h"
-#include "../h/interface.h"
 
 void escreveNoArquivo(PACIENTE* umPaciente) {
-    FILE* arquivo = fopen("resrc/pacientes.csv", "r+");
-    if (arquivo == 0) problemaComArquivo();
+    FILE* arquivo = fopen("resrc/pacientes.csv", "a+");
+    if (arquivo == 0);
 
     fseek(arquivo, 0, SEEK_END);
-    fprintf(arquivo, "%s;%d\n", umPaciente->individuo.nome, umPaciente->individuo.idade);
+    fprintf(arquivo, "%05d;%s;%d\n", umPaciente->id,
+        umPaciente->individuo.nome,
+        IDADE(umPaciente->individuo.dataNascimento.ano),
+        IMC(umPaciente->individuo.altura, umPaciente->individuo.peso));
     
     fclose(arquivo);
 }
@@ -18,7 +20,7 @@ void lerDoArquivo() {
     char linhaDoArquivo[50];
 
     FILE* arquivo = fopen("resrc/pacientes.csv", "r");
-    if (arquivo == 0) problemaComArquivo();
+    if (arquivo == 0);
 
     fseek(arquivo, 0, SEEK_SET);
     while(fgetc(arquivo) != EOF) { //Enquanto o caracter atual for diferente do final do arquivo.
