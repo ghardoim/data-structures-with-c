@@ -2,5 +2,6 @@
 #define _LIVRO_H_
 
 void cadastraLivros(LEITOR* umLeitor);
+void exibeLivros(LEITOR* umLeitor);
 
 #endif

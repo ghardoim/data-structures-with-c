@@ -25,3 +25,12 @@ void cadastraLivros(LEITOR* umLeitor) {
     arquivarLivro(umLeitor);
     system("pause");
 }
+
+void exibeLivros(LEITOR* umLeitor) {
+    if (umLeitor->primeiroLivro == NULL && umLeitor->ultimoLivro == NULL) printf("Poxa, vc no tienes libros cadastrados");
+
+    while (umLeitor->novoLivro != NULL) {
+        printf("livro: %s", umLeitor->novoLivro->nome);
+        umLeitor->novoLivro = umLeitor->novoLivro->livroAntes;    
+    }
+}

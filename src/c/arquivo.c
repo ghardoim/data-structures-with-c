@@ -4,12 +4,12 @@
 
 #include "../h/mainLib.h"
 
-void arquivarLivro(LEITOR* leitor) {
+void arquivarLivro(LEITOR* umLeitor) {
     FILE* arquivo = fopen("resources/estante.csv", "a+");
     if (arquivo == 0);
 
     fseek(arquivo, 0, SEEK_END);
-    fprintf(arquivo, "%s;%05d;%s\n", leitor->login, leitor->novoLivro->id, leitor->novoLivro->nome);
+    fprintf(arquivo, "%s;%05d;%s\n", umLeitor->login, umLeitor->novoLivro->id, umLeitor->novoLivro->nome);
     fclose(arquivo);
 }
 

@@ -34,16 +34,6 @@ void removerLivro(LIVRO** primeiro, LIVRO** ultimo) {
     total--;
 }
 
-void exibirLivro(LIVRO* primeiro, LIVRO* ultimo) {
-    system("clear");
-    if (primeiro == NULL && ultimo == NULL);
-    while (primeiro != NULL && ultimo != NULL){
-        if (primeiro->livroDepois == NULL) break;
-        primeiro = primeiro->livroDepois;
-    }
-    system("pause");    
-}
-
 int main() {
 
     LIVRO *livroAtual = NULL;
@@ -53,6 +43,7 @@ int main() {
     get((*alguem)->login);
     printf("Digite sua senha: ");
     esconde((*alguem)->senha);
+    criptografa((*alguem)->senha);
 
     if (!estaCadastrado(*alguem)) cadastrarLeitor(*alguem);
     
@@ -61,8 +52,10 @@ int main() {
 
     printf("\n\n%s, bem vindo a sua estante.\n",(*alguem)->login);
     printf(" (1) --- cadastre novos livros\n");
+    printf(" (4) --- esses son seus livros\n");
 
     do {
+        exibeLivros(*alguem);
         scanf("%d", &opcao);
         switch (opcao) {
             case 1:
@@ -76,7 +69,6 @@ int main() {
                 break;
             case 4:
                 //ler();
-                // exibirLivro(firstLivro, lastLivro);
                 break;
             case 5:
                 //Encerrar.
@@ -92,7 +84,6 @@ int main() {
         free(livroAtual);
         livroAtual = (*alguem)->primeiroLivro;
     }
-
     free(alguem);
     return 0;
 }
