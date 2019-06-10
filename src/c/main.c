@@ -6,6 +6,8 @@
 #include "../h/mainLib.h"
 #include "../h/arquivo.h"
 #include "../h/senha.h"
+#include "../h/livro.h"
+#include "../h/help.h"
 
 /*
 
@@ -16,24 +18,6 @@
     Remoçao: Ínicio. 
 
 */
-
-void cadastrarLivro(LIVRO** primeiro, LIVRO** ultimo) {
-
-    LIVRO *novo = (LIVRO*) malloc(sizeof(LIVRO));
-
-    if (*primeiro == NULL && *ultimo ==NULL) {
-        *primeiro = novo;
-        novo->livroAntes = NULL;   
-    } else {
-        novo->livroAntes = *ultimo;
-        (*ultimo)->livroDepois = novo;
-    }
-    *ultimo = novo;
-    novo->livroDepois = NULL;
-
-    escrever(novo);
-    system("pause");
-}
 
 void alterarLivro(LIVRO* primeiro, LIVRO* ultimo) {
     if (primeiro == NULL && ultimo == NULL);
@@ -66,33 +50,33 @@ int main() {
     LEITOR **alguem = (LEITOR**) malloc(sizeof(LEITOR*));
 
     printf("Digite seu login: ");
-    scanf("%s", (*alguem)->login);
+    get((*alguem)->login);
     printf("Digite sua senha: ");
-    escondeSenha((*alguem)->senha);
+    esconde((*alguem)->senha);
 
-    if (!estaCadastrado(*alguem)) {
-        printf("Vamos realizar seu cadastro");
-        cadastrarLeitor(*alguem);
+    if (!estaCadastrado(*alguem)) cadastrarLeitor(*alguem);
+    
+    (*alguem)->primeiroLivro = NULL;
+    (*alguem)->ultimoLivro = NULL;
 
-    }
+    printf("\n\n%s, bem vindo a sua estante.\n",(*alguem)->login);
+    printf(" (1) --- cadastre novos livros\n");
 
-
-/*
     do {
         scanf("%d", &opcao);
         switch (opcao) {
             case 1:
-                cadastrarLivro(&firstLivro, &lastLivro);
+                cadastraLivros(*alguem);
                 break;
             case 2:
-                alterarLivro(firstLivro, lastLivro);
+                // alterarLivro(firstLivro, lastLivro);
                 break;
             case 3:
-                removerLivro(&firstLivro, &lastLivro);
+                // removerLivro(&firstLivro, &lastLivro);
                 break;
             case 4:
                 //ler();
-                exibirLivro(firstLivro, lastLivro);
+                // exibirLivro(firstLivro, lastLivro);
                 break;
             case 5:
                 //Encerrar.
@@ -101,7 +85,7 @@ int main() {
                 break;
         }
     } while (opcao != 5);
-*/
+
     livroAtual = (*alguem)->primeiroLivro;
     while (livroAtual != NULL) {
         (*alguem)->primeiroLivro = livroAtual->livroDepois;

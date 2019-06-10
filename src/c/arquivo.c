@@ -4,12 +4,12 @@
 
 #include "../h/mainLib.h"
 
-void escrever(LIVRO* umLivro) {
+void arquivarLivro(LEITOR* leitor) {
     FILE* arquivo = fopen("resources/estante.csv", "a+");
     if (arquivo == 0);
 
     fseek(arquivo, 0, SEEK_END);
-    fprintf(arquivo, "%05d;%s\n", umLivro->id,umLivro->nome);
+    fprintf(arquivo, "%s;%05d;%s\n", leitor->login, leitor->novoLivro->id, leitor->novoLivro->nome);
     fclose(arquivo);
 }
 
@@ -34,7 +34,7 @@ void cadastrarLeitor(LEITOR* umLeitor) {
     if (arquivo == 0);
 
     fseek(arquivo, 0, SEEK_END);
-    fprintf(arquivo, " %s;%s\n", umLeitor->login, umLeitor->senha);
+    fprintf(arquivo, "%s;%s\n", umLeitor->login, umLeitor->senha);
     fclose(arquivo);
 }
 

@@ -1,7 +1,7 @@
 #include <conio.h>
 #include <stdio.h>
 
-void escondeSenha(char senha[]) {
+void esconde(char senha[]) {
     fflush(stdin);
     int i = 0;
     do {   
@@ -22,7 +22,7 @@ void escondeSenha(char senha[]) {
     }while(i < 50);
 }
 
-void senhaCriptografada(char senha[]) {
+void criptografa(char senha[]) {
     int i = 0;
     while (senha[i] != '\0') {
         senha[i] = senha[i] + 1;

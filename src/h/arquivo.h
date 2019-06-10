@@ -6,7 +6,7 @@
 // Funções de arquivo.
 void cadastrarLeitor(LEITOR* umLeitor);
 int estaCadastrado(LEITOR* umLeitor);
-void escrever(LIVRO* umLivro);
+void arquivarLivro(LEITOR* leitor);
 void ler();
 
 #endif
