@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "../h/terminal.h"
 #include "../h/mainLib.h"
 #include "../h/arquivo.h"
-
-PACIENTE *firstPaciente = NULL, *lastPaciente = NULL;
+#include "../h/senha.h"
 
 /*
 
@@ -17,65 +17,82 @@ PACIENTE *firstPaciente = NULL, *lastPaciente = NULL;
 
 */
 
-void cadastrar(PACIENTE** primeiro, PACIENTE** ultimo) {
+void cadastrarLivro(LIVRO** primeiro, LIVRO** ultimo) {
 
-    PACIENTE *novo = (PACIENTE*) malloc(sizeof(PACIENTE));
+    LIVRO *novo = (LIVRO*) malloc(sizeof(LIVRO));
 
     if (*primeiro == NULL && *ultimo ==NULL) {
         *primeiro = novo;
-        novo->pacienteAntes = NULL;   
+        novo->livroAntes = NULL;   
     } else {
-        novo->pacienteAntes = *ultimo;
-        (*ultimo)->pacienteDepois = novo;
+        novo->livroAntes = *ultimo;
+        (*ultimo)->livroDepois = novo;
     }
     *ultimo = novo;
-    novo->pacienteDepois = NULL;
+    novo->livroDepois = NULL;
 
-    escreveNoArquivo(novo);
+    escrever(novo);
     system("pause");
 }
 
-void alterar(PACIENTE* primeiro, PACIENTE* ultimo) {
+void alterarLivro(LIVRO* primeiro, LIVRO* ultimo) {
     if (primeiro == NULL && ultimo == NULL);
 }
 
-void remover(PACIENTE** primeiro, PACIENTE** ultimo) {
+void removerLivro(LIVRO** primeiro, LIVRO** ultimo) {
     if (primeiro == NULL && ultimo == NULL);
     if (*primeiro == *ultimo) {
         *primeiro = NULL;
         *ultimo = NULL;
     } else {
-        *primeiro = (*primeiro)->pacienteDepois;
+        *primeiro = (*primeiro)->livroDepois;
     }
     total--;
 }
 
-void exibir(PACIENTE* primeiro, PACIENTE* ultimo) {
+void exibirLivro(LIVRO* primeiro, LIVRO* ultimo) {
     system("clear");
     if (primeiro == NULL && ultimo == NULL);
     while (primeiro != NULL && ultimo != NULL){
-        if (primeiro->pacienteDepois == NULL) break;
-        primeiro = primeiro->pacienteDepois;
+        if (primeiro->livroDepois == NULL) break;
+        primeiro = primeiro->livroDepois;
     }
     system("pause");    
 }
 
 int main() {
+
+    LIVRO *livroAtual = NULL;
+    LEITOR **alguem = (LEITOR**) malloc(sizeof(LEITOR*));
+
+    printf("Digite seu login: ");
+    scanf("%s", (*alguem)->login);
+    printf("Digite sua senha: ");
+    escondeSenha((*alguem)->senha);
+
+    if (!estaCadastrado(*alguem)) {
+        printf("Vamos realizar seu cadastro");
+        cadastrarLeitor(*alguem);
+
+    }
+
+
+/*
     do {
         scanf("%d", &opcao);
         switch (opcao) {
             case 1:
-                cadastrar(&firstPaciente, &lastPaciente);
+                cadastrarLivro(&firstLivro, &lastLivro);
                 break;
             case 2:
-                alterar(firstPaciente, lastPaciente);
+                alterarLivro(firstLivro, lastLivro);
                 break;
             case 3:
-                remover(&firstPaciente, &lastPaciente);
+                removerLivro(&firstLivro, &lastLivro);
                 break;
             case 4:
-                //lerDoArquivo();
-                exibir(firstPaciente, lastPaciente);
+                //ler();
+                exibirLivro(firstLivro, lastLivro);
                 break;
             case 5:
                 //Encerrar.
@@ -84,5 +101,14 @@ int main() {
                 break;
         }
     } while (opcao != 5);
+*/
+    livroAtual = (*alguem)->primeiroLivro;
+    while (livroAtual != NULL) {
+        (*alguem)->primeiroLivro = livroAtual->livroDepois;
+        free(livroAtual);
+        livroAtual = (*alguem)->primeiroLivro;
+    }
+
+    free(alguem);
     return 0;
 }

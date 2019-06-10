@@ -1,31 +1,31 @@
 #ifndef _MAINLIB_H_
 #define _MAINLIB_H_
 
-#define IMC(altura, peso) (altura * altura / peso)
+#define _CHAR 50
 #define IDADE(anoNasc) (2019 - anoNasc)
 
 typedef struct data {
     int ano, mes, dia;
 }DATA;
 
-typedef struct pessoa {
-    DATA dataNascimento;
-    float peso, altura;
-    char nome[30];
-}PESSOA;
-
-typedef struct paciente {
-    struct paciente *pacienteAntes, *pacienteDepois;
-    PESSOA individuo;
+typedef struct livro {
+    struct livro *livroAntes, *livroDepois;
+    char nome[_CHAR];
     int id;
-}PACIENTE;
+}LIVRO;
+
+typedef struct leitor {
+    char gambiarra[_CHAR], login[_CHAR], senha[_CHAR];
+    LIVRO *primeiroLivro, *ultimoLivro;
+    DATA dataNascimento;
+}LEITOR;
 
 int opcao, total;
 
 // Funções da lista duplamente encadeada.
-void cadastrar(PACIENTE** primeiro, PACIENTE** ultimo);
-void alterar(PACIENTE* primeiro, PACIENTE* ultimo);
-void remover(PACIENTE** primeiro, PACIENTE** ultimo);
-void exibir(PACIENTE* primeiro, PACIENTE* ultimo);
+void cadastrarLivro(LIVRO** primeiro, LIVRO** ultimo);
+void alterarLivro(LIVRO* primeiro, LIVRO* ultimo);
+void removerLivro(LIVRO** primeiro, LIVRO** ultimo);
+void exibirLivro(LIVRO* primeiro, LIVRO* ultimo);
 
 #endif
