@@ -23,20 +23,8 @@ void alterarLivro(LIVRO* primeiro, LIVRO* ultimo) {
     if (primeiro == NULL && ultimo == NULL);
 }
 
-void removerLivro(LIVRO** primeiro, LIVRO** ultimo) {
-    if (primeiro == NULL && ultimo == NULL);
-    if (*primeiro == *ultimo) {
-        *primeiro = NULL;
-        *ultimo = NULL;
-    } else {
-        *primeiro = (*primeiro)->livroDepois;
-    }
-    total--;
-}
-
 int main() {
 
-    LIVRO *livroAtual = NULL;
     LEITOR **alguem = (LEITOR**) malloc(sizeof(LEITOR*));
 
     printf("Digite seu login: ");
@@ -49,6 +37,7 @@ int main() {
     
     (*alguem)->primeiroLivro = NULL;
     (*alguem)->ultimoLivro = NULL;
+    (*alguem)->novoLivro = NULL;
 
     printf("\n\n%s, bem vindo a sua estante.\n",(*alguem)->login);
     printf(" (1) --- cadastre novos livros\n");
@@ -62,10 +51,10 @@ int main() {
                 cadastraLivros(*alguem);
                 break;
             case 2:
-                // alterarLivro(firstLivro, lastLivro);
+                // alterarLivro(*alguem);
                 break;
             case 3:
-                // removerLivro(&firstLivro, &lastLivro);
+                removeLivros(*alguem);
                 break;
             case 4:
                 //ler();
@@ -78,11 +67,11 @@ int main() {
         }
     } while (opcao != 5);
 
-    livroAtual = (*alguem)->primeiroLivro;
-    while (livroAtual != NULL) {
-        (*alguem)->primeiroLivro = livroAtual->livroDepois;
-        free(livroAtual);
-        livroAtual = (*alguem)->primeiroLivro;
+    (*alguem)->novoLivro = (*alguem)->primeiroLivro;
+    while ((*alguem)->novoLivro != NULL) {
+        (*alguem)->primeiroLivro = (*alguem)->novoLivro->livroDepois;
+        free((*alguem)->novoLivro);
+        (*alguem)->novoLivro = (*alguem)->primeiroLivro;
     }
     free(alguem);
     return 0;

@@ -17,15 +17,13 @@ typedef struct livro {
 typedef struct leitor {
     char gambiarra[_CHAR], login[_CHAR], senha[_CHAR];
     LIVRO *primeiroLivro, *ultimoLivro, *novoLivro;
+    struct leitor *proximo, *anterior;
     DATA dataNascimento;
 }LEITOR;
 
-int opcao, total;
+int opcao;
 
 // Funções da lista duplamente encadeada.
-// void cadastrarLivro(LIVRO** primeiro, LIVRO** ultimo);
 void alterarLivro(LIVRO* primeiro, LIVRO* ultimo);
-void removerLivro(LIVRO** primeiro, LIVRO** ultimo);
-void exibirLivro(LIVRO* primeiro, LIVRO* ultimo);
 
 #endif
