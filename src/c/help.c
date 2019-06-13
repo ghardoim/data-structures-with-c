@@ -12,14 +12,12 @@ void get(char string[]) {
             printf("\b \b"); 
             string[i] = 0x00;
             i--;
-
         } else if (string[i] == 13) { // Enter  
             string[i] = 0x00;
             break;
-
-        } else if (string[i] != 0x08){
+        } else if (string[i] != 0x08) {
             putchar(string[i]);
             i++;              
         }
-    }while(i < 50);
+    } while (i < 50);
 }

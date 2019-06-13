@@ -12,16 +12,14 @@ void esconde(char senha[]) {
             printf("\b \b"); 
             senha[i] = 0x00;
             i--;
-
         } else if (senha[i] == 13) { // Enter  
             senha[i] = 0x00;
             break;
-
-        } else if (senha[i] != 0x08){
+        } else if (senha[i] != 0x08) {
             putchar('*');
             i++;              
         }
-    }while(i < 50);
+    } while (i < 50);
 }
 
 void criptografa(char senha[]) {

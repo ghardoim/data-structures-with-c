@@ -51,7 +51,6 @@ void removeLivros(LEITOR* umLeitor) {
         printf("\n\tEstante vazia! Adicione alguns livros!!");
         return;
     }
-
     if (umLeitor->primeiroLivro == umLeitor->ultimoLivro) {
         umLeitor->primeiroLivro = NULL;
         umLeitor->ultimoLivro = NULL;
@@ -66,12 +65,10 @@ void alterarLivro(LEITOR* umLeitor, int number) {
         printf("\n\tEstante vazia! Adicione alguns livros!!");
         return;
     }
-
     umLeitor->novoLivro = umLeitor->primeiroLivro;
     while (umLeitor->novoLivro->idLivro != number) {
         umLeitor->novoLivro = umLeitor->novoLivro->livroDepois;
     }
-    
     char escolha;
     printf("\n'A'utor || 'G'enero || 'E'ditora\nO que falta nesse livro? ");
     fflush(stdin);

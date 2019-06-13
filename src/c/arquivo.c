@@ -11,7 +11,6 @@ void arquivarLivros(LEITOR* umLeitor) {
     if (arquivo == false);
 
     fseek(arquivo, 0, SEEK_END);
-
     umLeitor->novoLivro = umLeitor->primeiroLivro;
     while (umLeitor->novoLivro != NULL) {
         if (!guardado(umLeitor)) {
@@ -24,7 +23,6 @@ void arquivarLivros(LEITOR* umLeitor) {
 
 void pegarLivros(LEITOR* umLeitor) {
     char linha[50];
-
     FILE* arquivo = fopen("resources/estante.csv", "r");
     if (arquivo == false);
 
@@ -37,7 +35,6 @@ void pegarLivros(LEITOR* umLeitor) {
             cadastraLivros(umLeitor);
         }
     }
-
     fclose(arquivo);
 }
 
