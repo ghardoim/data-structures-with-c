@@ -1,6 +1,8 @@
 #include <conio.h>
 #include <stdio.h>
 
+#include "../h/help.h"
+
 void get(char string[]) {
     fflush(stdin);
     int i = 0;

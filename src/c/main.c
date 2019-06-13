@@ -10,62 +10,63 @@
 #include "../h/help.h"
 
 /*
+    Arquitetura trabalhada com o objeto 'Livro': 
 
-    Estrutura de dados: Fila.
-    Característica: FIFO (First IN, First OUT) / Primeiro a sair, primeiro a entrar.
-    Implementação: Lista Duplamente Ligada.
-    Inserção: Final.
-    Remoçao: Ínicio. 
-
+        Estrutura de dados: Fila.
+        Característica: FIFO (First IN, First OUT) / Primeiro a sair, primeiro a entrar.
+        Implementação: Lista Duplamente Ligada.
+        Inserção: Final.
+        Remoçao: Ínicio.
 */
-
-void alterarLivro(LIVRO* primeiro, LIVRO* ultimo) {
-    if (primeiro == NULL && ultimo == NULL);
-}
 
 int main() {
 
     LEITOR **alguem = (LEITOR**) malloc(sizeof(LEITOR*));
 
-    printf("Digite seu login: ");
+    printf("\nDigite seu login: ");
     get((*alguem)->login);
-    printf("Digite sua senha: ");
+    printf("\nDigite sua senha: ");
     esconde((*alguem)->senha);
     criptografa((*alguem)->senha);
 
-    if (!estaCadastrado(*alguem)) cadastrarLeitor(*alguem);
+    if (!cadastrado(*alguem)) cadastrarLeitor(*alguem);
     
     (*alguem)->primeiroLivro = NULL;
     (*alguem)->ultimoLivro = NULL;
     (*alguem)->novoLivro = NULL;
 
-    printf("\n\n%s, bem vindo a sua estante.\n",(*alguem)->login);
-    printf(" (1) --- cadastre novos livros\n");
-    printf(" (4) --- esses son seus livros\n");
+    pegarLivros(*alguem);
 
     do {
+        // int number = 0;
+        system("clear");
+        printf("\n\n%s, os livros da sua estante:\n",(*alguem)->login);
         exibeLivros(*alguem);
+        printf("\n\n\t\t(1) Adicione novos livros!");
+        printf("\n\t\t(2) Remova livros antigos!");
+        printf("\n\nDigite o que deseja fazer: ");
         scanf("%d", &opcao);
         switch (opcao) {
             case 1:
+                (*alguem)->ehArquivo = false;
                 cadastraLivros(*alguem);
                 break;
+            /*
             case 2:
-                // alterarLivro(*alguem);
+                printf("\nQual o livro que deseja alterar: ");
+                scanf("%d", &number);
+                alterarLivro(*alguem, number);
                 break;
-            case 3:
+            */
+            case 2:
                 removeLivros(*alguem);
-                break;
-            case 4:
-                //ler();
-                break;
-            case 5:
-                //Encerrar.
                 break;
             default:
                 break;
         }
-    } while (opcao != 5);
+    } while (opcao == 2 || opcao == 1);
+
+    arquivarLivros(*alguem);
 
     (*alguem)->novoLivro = (*alguem)->primeiroLivro;
     while ((*alguem)->novoLivro != NULL) {

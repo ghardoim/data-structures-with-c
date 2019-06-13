@@ -1,6 +1,8 @@
 #include <conio.h>
 #include <stdio.h>
 
+#include "../h/senha.h"
+
 void esconde(char senha[]) {
     fflush(stdin);
     int i = 0;

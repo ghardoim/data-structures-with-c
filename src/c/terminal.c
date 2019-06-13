@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "../h/terminal.h"
+
 #define CMD_TAM_MAX 1024
 
 int systemCL(const char* fmt, ...) {
