@@ -4,8 +4,7 @@
 
 #include "../h/terminal.h"
 
-#define CMD_TAM_MAX 1024
-
+/*
 int systemCL(const char* fmt, ...) {
     va_list args;
     char cmd[CMD_TAM_MAX + 1];
@@ -16,3 +15,4 @@ int systemCL(const char* fmt, ...) {
 
     return system(cmd);
 }
+*/

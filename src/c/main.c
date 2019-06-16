@@ -35,14 +35,12 @@ int main() {
 
     if (!cadastrado(*alguem)) cadastrarLeitor(*alguem);
     pegarLivros(*alguem);
-
     do {
         system("clear");
         printf("\n\n%s, os livros da sua estante:\n",(*alguem)->login);
         exibeLivros(*alguem);
         printf("\n\n\t\t(1) Adicione novos livros!");
         printf("\n\t\t(2) Remova livros antigos!");
-        
         printf("\n\n\t\t(3) Sair");
         printf("\n\nDigite o que deseja fazer: ");
         scanf("%d", &opcao);
@@ -62,7 +60,6 @@ int main() {
                 break;
         }
     } while (opcao != 3);
-
     arquivarLivros(*alguem);
     libera(*alguem);   
     return 0;

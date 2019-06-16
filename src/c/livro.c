@@ -1,10 +1,11 @@
 #include "../h/mainLib.h"
-#include "../h/arquivo.h"
-#include "../h/livro.h"
-#include "../h/help.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+
+#include "../h/arquivo.h"
+#include "../h/livro.h"
+#include "../h/help.h"
 
 void cadastraLivros(LEITOR* umLeitor) {
     fflush(stdin);
@@ -38,7 +39,6 @@ void exibeLivros(LEITOR* umLeitor) {
         printf("\n\tEstante vazia! Adicione alguns livros!!");
         return;
     }
-
     umLeitor->novoLivro = umLeitor->ultimoLivro;
     while (umLeitor->novoLivro != NULL) {
         printf("\n\tId: %d | Livro: %s",umLeitor->novoLivro->idLivro, umLeitor->novoLivro->nome);
@@ -60,6 +60,11 @@ void removeLivros(LEITOR* umLeitor) {
     }
 }
 
+int semLivros(LEITOR* umLeitor) {
+    return (umLeitor->primeiroLivro == NULL && umLeitor->ultimoLivro == NULL);
+}
+
+/*
 void alterarLivro(LEITOR* umLeitor, int number) {
     if (semLivros(umLeitor)) {
         printf("\n\tEstante vazia! Adicione alguns livros!!");
@@ -96,7 +101,4 @@ void alterarLivro(LEITOR* umLeitor, int number) {
         break;
     }
 }
-
-int semLivros(LEITOR* umLeitor) {
-    return (umLeitor->primeiroLivro == NULL && umLeitor->ultimoLivro == NULL);
-}
+*/

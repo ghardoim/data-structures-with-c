@@ -14,6 +14,7 @@ void libera(LEITOR* umLeitor) {
     free(umLeitor);
 }
 
+/*
 void adicionarAmigos(LEITOR* umLeitorRaiz) {
     if (umLeitorRaiz == NULL) {
         umLeitorRaiz = (LEITOR*) malloc(sizeof(LEITOR*)); 
@@ -30,7 +31,6 @@ void adicionarAmigos(LEITOR* umLeitorRaiz) {
         }        
     }
 }
-
 void listarAmigos(LEITOR* umLeitorRaiz) {
     if (umLeitorRaiz != NULL) {
         printf("%s", umLeitorRaiz->login);
@@ -38,3 +38,4 @@ void listarAmigos(LEITOR* umLeitorRaiz) {
         listarAmigos(umLeitorRaiz->esquerda);
     }
 }
+ */

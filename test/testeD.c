@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-#include "../src/h/mainLib.h"
 
 void escondeSenha(char senha[]) {
     fflush(stdin);
@@ -12,11 +11,9 @@ void escondeSenha(char senha[]) {
             printf("\b \b"); 
             senha[i] = 0x00;
             i--;
-
         } else if (senha[i] == 13) { // Enter  
             senha[i] = 0x00;
             break;
-
         } else if (senha[i] != 0x08){
             putchar('*');
             i++;              
@@ -33,7 +30,6 @@ void senhaCriptografada(char senha[]) {
 }
 
 int main() {
-
     char senha[50];
     escondeSenha(senha);
     printf("\n%s", senha);
