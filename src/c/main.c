@@ -26,7 +26,7 @@ int main() {
     (*alguem)->primeiroLivro = NULL;
     (*alguem)->ultimoLivro = NULL;
     (*alguem)->novoLivro = NULL;
-
+    
     printf("\nDigite seu login: ");
     get((*alguem)->login);
     printf("\nDigite sua senha: ");
@@ -40,7 +40,10 @@ int main() {
         system("clear");
         printf("\n\n%s, os livros da sua estante:\n",(*alguem)->login);
         exibeLivros(*alguem);
-        printf("\n\n\t\t(1) Adicione novos livros!\n\t\t(2) Remova livros antigos!");
+        printf("\n\n\t\t(1) Adicione novos livros!");
+        printf("\n\t\t(2) Remova livros antigos!");
+        
+        printf("\n\n\t\t(3) Sair");
         printf("\n\nDigite o que deseja fazer: ");
         scanf("%d", &opcao);
         switch (opcao) {
@@ -51,10 +54,14 @@ int main() {
             case 2:
                 removeLivros(*alguem);
                 break;
+            case 3:
+                break;
             default:
+                printf("\n\tEscolha estranha hein!");
+                system("sleep 1");
                 break;
         }
-    } while (opcao == 2 || opcao == 1);
+    } while (opcao != 3);
 
     arquivarLivros(*alguem);
     libera(*alguem);   

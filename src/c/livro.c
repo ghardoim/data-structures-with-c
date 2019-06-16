@@ -98,6 +98,5 @@ void alterarLivro(LEITOR* umLeitor, int number) {
 }
 
 int semLivros(LEITOR* umLeitor) {
-    if (umLeitor->primeiroLivro == NULL && umLeitor->ultimoLivro == NULL) return true;
-    return false;
+    return (umLeitor->primeiroLivro == NULL && umLeitor->ultimoLivro == NULL);
 }

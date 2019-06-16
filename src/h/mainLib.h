@@ -19,7 +19,7 @@ typedef struct livro {
 typedef struct leitor {
     char gambiarra[_CHAR], login[_CHAR], senha[_CHAR];
     LIVRO *primeiroLivro, *ultimoLivro, *novoLivro;
-    struct leitor *proximo, *anterior;
+    struct leitor *direita, *esquerda;
     char biblioteca[_CHAR];
     DATA dataNascimento;
     int ehArquivo;
